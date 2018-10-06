@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :ratings
       resources :subjects
       resources :notes
-      resources :enrollments
+      resources :subject_users
     end
   end
 end

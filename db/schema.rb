@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181006201122) do
-
-  create_table "enrollments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "users_id"
-    t.bigint "subjects_id"
-    t.index ["subjects_id"], name: "index_enrollments_on_subjects_id"
-    t.index ["users_id"], name: "index_enrollments_on_users_id"
-  end
+ActiveRecord::Schema.define(version: 20181006231851) do
 
   create_table "entities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -51,6 +44,11 @@ ActiveRecord::Schema.define(version: 20181006201122) do
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
+  create_table "subject_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "subject_id"
+    t.integer "user_id"
+  end
+
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "grade"
@@ -71,8 +69,6 @@ ActiveRecord::Schema.define(version: 20181006201122) do
     t.index ["entity_id"], name: "index_users_on_entity_id"
   end
 
-  add_foreign_key "enrollments", "subjects", column: "subjects_id"
-  add_foreign_key "enrollments", "users", column: "users_id"
   add_foreign_key "notes", "subjects"
   add_foreign_key "notes", "users"
   add_foreign_key "ratings", "users"
