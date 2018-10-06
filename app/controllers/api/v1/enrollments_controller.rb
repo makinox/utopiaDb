@@ -40,7 +40,7 @@ module Api
             private
 
             def ref_params
-                params.permit(:user_id, :subjects_id)
+                params.permit(:users_id, :subjects_id)
             end
             
         end

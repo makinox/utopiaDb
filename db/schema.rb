@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181006050135) do
+ActiveRecord::Schema.define(version: 20181006201122) do
 
   create_table "enrollments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "users_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20181006050135) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "responsable"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
