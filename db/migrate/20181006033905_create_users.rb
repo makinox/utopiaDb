@@ -2,8 +2,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
       t.string :name
-      t.string :user
-      t.string :identity
+      t.string :user, unique: true
+      t.string :email, unique: true
+      t.string :password
       t.integer :age
       t.string :rol
       t.string :grade
