@@ -7,7 +7,7 @@ module Api
                 if user.password == params[:password]
                     render json: {status: 200, data:user.entity_id }, status: :ok
                 else
-                    render json: {status: 401, data: [false, false]}, status: :unauthorized
+                    render json: {status: 401, data:false}, status: :unauthorized
                 end
             end
         end
