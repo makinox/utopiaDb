@@ -5,7 +5,7 @@ module Api
                 user = User.where(user: params[:user]).first
 
                 if user.password == params[:password]
-                    render json: {status: 200, data:user.entity_id} status: :ok
+                    render json: {status: 200, data:user.entity_id }, status: :ok
                 else
                     render json: {status: 401, data: [false, false]}, status: :unauthorized
                 end
