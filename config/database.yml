@@ -8,13 +8,13 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   encoding: unicode
-  username: root
-  password: 
 
 development:
   <<: *default
   adapter: mysql2
   database: utopiadb
+  username: root
+  password: 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,8 +22,12 @@ development:
 test:
   <<: *default
   database: utopiadb
+  username: root
+  password: 
 
 production:
   <<: *default
   adapter: postgresql
   database: utopiadb
+  username: root_production
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
