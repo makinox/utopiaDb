@@ -8,7 +8,7 @@ module Api
             end
 
             def show
-                enrollment = SubjectUser.find(params[:id])
+                enrollment = SubjectUser.where(:user_id params[:id]).first
                 render json: {status: 200, data:enrollment}, status: :ok
             end
 
@@ -23,7 +23,7 @@ module Api
             end
 
             def update
-                enrollment = SubjectUser.find(params[:id])
+                enrollment = SubjectUser.where(:user_id params[:id]).first
                 if enrollment.update_attributes(ref_params)
                     render json: {status: 200, data:enrollment}, status: :updated
                 else 
@@ -32,7 +32,7 @@ module Api
             end
 
             def destroy
-                enrollment = SubjectUser.find(params[:id])
+                enrollment = SubjectUser.where(:user_id params[:id]).first
                 enrollment.destroy
                 render json: {status: 200, data:enrollment}, status: :deleted
             end
