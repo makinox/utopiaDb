@@ -8,7 +8,7 @@ module Api
             end
 
             def show
-                rating = Rating.find(params[:id])
+                rating = Rating.where(user_id: params[:id])
                 render json: {status: 200, data:rating}, status: :ok
             end
 
