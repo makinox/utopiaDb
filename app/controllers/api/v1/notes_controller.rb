@@ -8,7 +8,7 @@ module Api
             end
 
             def show
-                note = Note.find(params[:id])
+                note = Note.where(user_id: params[:id])
                 render json: {status: 200, data:note}, status: :ok
             end
 
