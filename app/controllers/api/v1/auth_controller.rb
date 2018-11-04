@@ -4,9 +4,13 @@ module Api
             def create
                 user = User.where(user: params[:user]).first
 
-                if user.password == params[:password]
-                    render json: {status: 200, data:{id:user.id, entity:user.entity_id} }, status: :ok
-                else
+                begin
+                    if user.password == params[:password]
+                        render json: {status: 200, data:{id:user.id, entity:user.entity_id} }, status: :ok
+                    else
+                        render json: {status: 401, data:false}, status: :unauthorized
+                    end
+                rescue
                     render json: {status: 401, data:false}, status: :unauthorized
                 end
             end
